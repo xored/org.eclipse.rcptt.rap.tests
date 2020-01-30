@@ -68,9 +68,6 @@
             <platform>rap</platform>
             <version>${runner-version}</version>
           </runner>
-          <suites>
-            <suite>${RapTestSuite}</suite>
-          </suites>
           <skipTags>
             <tag>skipExecution</tag>
           </skipTags>
