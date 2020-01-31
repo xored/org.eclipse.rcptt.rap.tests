@@ -187,10 +187,12 @@ def tests(String repo, String runner, String args) {
 }
 
 def _run_tests(String runner, String args) {
+  sh "echo ${runner}"
+  sh "echo `readlink -f ${runner}`"
   sh "mvn clean verify -B -f rcpttTests/pom.xml \
-      -Dmaven.repo.local=$WORKSPACE/m2 -e \
+      -Dmaven.repo.local='$WORKSPACE/m2' -e \
       -Dci-maven-version=2.0.0-SNAPSHOT \
-      -DexplicitRunner=`readlink -f ${runner}` \
+      -DexplicitRunner=${runner} \
       ${args} || true"
   sh 'test -f $WORKSPACE/rcpttTests/target/results/tests.html'
 }
